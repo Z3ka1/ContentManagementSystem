@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Filmovi
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for TabPrikaz.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TabPrikaz : Window
     {
-        public MainWindow()
+        public TabPrikaz()
         {
             InitializeComponent();
         }
@@ -33,14 +32,6 @@ namespace Filmovi
         private void btnIzlaz_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void btnPrijava_Click(object sender, RoutedEventArgs e)
-        {
-            //TODO Validacija prijave
-
-            TabPrikaz prikaz = new TabPrikaz();
-            prikaz.ShowDialog();
         }
     }
 }
