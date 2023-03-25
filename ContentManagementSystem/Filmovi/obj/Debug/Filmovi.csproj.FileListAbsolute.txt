@@ -18,3 +18,8 @@ C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentM
 C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\obj\Debug\TabPrikaz.g.cs
 C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\obj\Debug\Prikaz.baml
 C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\obj\Debug\TabPrikaz.baml
+C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\bin\Debug\Common.dll
+C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\bin\Debug\Common.pdb
+C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\obj\Debug\Filmovi.csproj.CopyComplete
+C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\obj\Debug\DodajFilm.g.cs
+C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\obj\Debug\DodajFilm.baml

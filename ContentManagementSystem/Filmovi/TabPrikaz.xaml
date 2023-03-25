@@ -46,18 +46,29 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.ColumnSpan="2" Content="Tabelarni prikaz komedija" Foreground="White" FontSize="50" HorizontalAlignment="Center"></Label>
-                <DataGrid Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="20 0 20 0">
+                
+                <DataGrid ItemsSource="{Binding Komedije}" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="20 0 20 0" FontSize="15">
                     <DataGrid.Columns>
 
                         <DataGridCheckBoxColumn></DataGridCheckBoxColumn>
+
+                        <DataGridTextColumn Header="Ime komedije" Width="*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Link" Width="*"></DataGridTextColumn>
                         
-                        <DataGridTextColumn Header="Ime komedije"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Link"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Slika filma"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Datum dodavanja"></DataGridTextColumn>
-                        
+                        <DataGridTemplateColumn Header="Slika filma" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Slika}" Height="1"></Image>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Datum dodavanja" Width="*"></DataGridTextColumn>
+
                     </DataGrid.Columns>
                 </DataGrid>
+                
+                <Button Grid.Row="4" Margin="30 15" Content="Obrisi izbor" FontSize="23"></Button>
+                <Button Grid.Row="4" Grid.Column="1" Margin="30 15" Content="Dodaj film" FontSize="23" Click="Button_Click"></Button>
                 
             </Grid>
         </DockPanel>

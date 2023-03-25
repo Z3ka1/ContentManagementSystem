@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.32912.340
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filmovi", "Filmovi\Filmovi.csproj", "{EBCA11CC-B5F4-4EF5-9B6C-3C0A58D6B865}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{D8482BA5-F772-454A-9FF8-91358871D6F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{08DBADDF-AD62-4AC8-BE3E-269779B3A016}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{EBCA11CC-B5F4-4EF5-9B6C-3C0A58D6B865}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBCA11CC-B5F4-4EF5-9B6C-3C0A58D6B865}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBCA11CC-B5F4-4EF5-9B6C-3C0A58D6B865}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D8482BA5-F772-454A-9FF8-91358871D6F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8482BA5-F772-454A-9FF8-91358871D6F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8482BA5-F772-454A-9FF8-91358871D6F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8482BA5-F772-454A-9FF8-91358871D6F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08DBADDF-AD62-4AC8-BE3E-269779B3A016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08DBADDF-AD62-4AC8-BE3E-269779B3A016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08DBADDF-AD62-4AC8-BE3E-269779B3A016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08DBADDF-AD62-4AC8-BE3E-269779B3A016}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,5 @@
-﻿using Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,15 +15,12 @@ using System.Windows.Shapes;
 namespace Filmovi
 {
     /// <summary>
-    /// Interaction logic for TabPrikaz.xaml
+    /// Interaction logic for DodajFilm.xaml
     /// </summary>
-    public partial class TabPrikaz : Window
+    public partial class DodajFilm : Window
     {
-
-        public static BindingList<Komedija> Komedije { get; set; }
-        public TabPrikaz()
+        public DodajFilm()
         {
-            Komedije = new BindingList<Komedija>();
             InitializeComponent();
         }
 
@@ -39,10 +34,6 @@ namespace Filmovi
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            DodajFilm df = new DodajFilm();
-            df.ShowDialog();
-        }
+
     }
 }

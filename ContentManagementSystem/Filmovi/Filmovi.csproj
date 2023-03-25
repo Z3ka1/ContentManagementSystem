@@ -55,9 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DodajFilm.xaml.cs">
+      <DependentUpon>DodajFilm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TabPrikaz.xaml.cs">
       <DependentUpon>TabPrikaz.xaml</DependentUpon>
     </Compile>
+    <Page Include="DodajFilm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -113,6 +120,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Slike\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{08DBADDF-AD62-4AC8-BE3E-269779B3A016}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Slike\underline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Slike\bold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Slike\italic.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
