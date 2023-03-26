@@ -38,8 +38,7 @@ namespace Filmovi
         {
             this.Close();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnDodajFilm_Click(object sender, RoutedEventArgs e)
         {
             DodajFilm df = new DodajFilm();
             df.ShowDialog();
