@@ -40,6 +40,7 @@ namespace Filmovi
             //TODO Validacija prijave
 
             TabPrikaz prikaz = new TabPrikaz();
+            this.Close();
             prikaz.ShowDialog();
         }
     }

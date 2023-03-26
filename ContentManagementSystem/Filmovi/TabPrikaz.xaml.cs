@@ -36,12 +36,16 @@ namespace Filmovi
 
         private void btnIzlaz_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow logovanje = new MainWindow();
             this.Close();
+            logovanje.Show();
         }
         private void btnDodajFilm_Click(object sender, RoutedEventArgs e)
         {
             DodajFilm df = new DodajFilm();
+            this.Hide();
             df.ShowDialog();
+            this.Show();
         }
     }
 }

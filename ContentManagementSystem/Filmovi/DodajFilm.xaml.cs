@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -21,6 +22,8 @@ namespace Filmovi
     /// </summary>
     public partial class DodajFilm : Window
     {
+
+        string slika = "";
         public DodajFilm()
         {
             InitializeComponent();
@@ -101,12 +104,11 @@ namespace Filmovi
 
         private void btnUmetni_Click(object sender, RoutedEventArgs e)
         {
-            string temp;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
-                temp = openFileDialog.FileName;
-                Uri uri = new Uri(temp);
+                slika = openFileDialog.FileName;
+                Uri uri = new Uri(slika);
                 imgSlika.Source = new BitmapImage(uri);
             }
         }
@@ -125,7 +127,7 @@ namespace Filmovi
             else
             {
                 tbIme.BorderBrush = Brushes.Green;
-                tbIme.BorderThickness = new Thickness(1);
+                tbIme.BorderThickness = new Thickness(2);
                 lblImeGreska.Content = "";
             }
 
@@ -153,7 +155,7 @@ namespace Filmovi
                     else
                     {
                         tbTrajanje.BorderBrush = Brushes.Green;
-                        tbTrajanje.BorderThickness = new Thickness(1);
+                        tbTrajanje.BorderThickness = new Thickness(2);
                         lblTrajanjeGreska.Content = "";
                     }
                 }
@@ -212,5 +214,24 @@ namespace Filmovi
             }
         }
 
+        private void btnDodaj_Click(object sender, RoutedEventArgs e)
+        {
+            if(validate())
+            {
+                string opisRtf = tbIme.Text + ".rtf";
+
+                TextRange tr = new TextRange(rtbOpis.Document.ContentStart, rtbOpis.Document.ContentEnd);
+                FileStream fs = new FileStream(opisRtf, FileMode.Create);
+                tr.Save(fs, DataFormats.Rtf);
+                fs.Close();
+
+                TabPrikaz.Komedije.Add(new Common.Komedija(tbIme.Text, Int32.Parse(tbTrajanje.Text), tr.ToString(), slika, opisRtf, DateTime.Now));
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Dodavanje ne uspesno. Morate popuniti sve informacije o filmu!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }
