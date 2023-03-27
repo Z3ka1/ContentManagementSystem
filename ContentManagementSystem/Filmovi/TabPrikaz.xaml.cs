@@ -21,12 +21,20 @@ namespace Filmovi
     /// </summary>
     public partial class TabPrikaz : Window
     {
-
+        private Common.DataIO serializer = new Common.DataIO();
         public static BindingList<Komedija> Komedije { get; set; }
+
+        private bool isAdmin = false;
         public TabPrikaz()
         {
-            Komedije = new BindingList<Komedija>();
+            Komedije = serializer.DeSerializeObject<BindingList<Common.Komedija>>("komedije.xml");
+            if(Komedije == null)
+            {
+                Komedije = new BindingList<Komedija>();
+            }
+            DataContext = this;
             InitializeComponent();
+            
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -46,6 +54,39 @@ namespace Filmovi
             this.Hide();
             df.ShowDialog();
             this.Show();
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            serializer.SerializeObject<BindingList<Komedija>>(Komedije, "komedije.xml");
+        }
+
+        public void OnHyperlinkClick(object sender, RoutedEventArgs e)
+        {
+            if(isAdmin)
+            {
+                DodajFilm df = new DodajFilm(dgTabela.SelectedIndex);
+                this.Hide();
+                df.ShowDialog();
+                this.Show();
+            }
+        }
+
+        private void btnObrisiIzbor_Click(object sender, RoutedEventArgs e)
+        {
+            int brObrisanih = 0;
+            int brFilmova = dgTabela.Items.Count;
+            for(int i = 0; i < brFilmova; i++)
+            {
+                var item = dgTabela.Items[i - brObrisanih];
+                var myCheckBox = dgTabela.Columns[0].GetCellContent(item) as CheckBox;
+
+                if((bool)myCheckBox.IsChecked)
+                {
+                    Komedije.RemoveAt(i - brObrisanih);
+                    brObrisanih++;
+                }
+            }
         }
     }
 }

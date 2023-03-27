@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Filmovi"
         mc:Ignorable="d"
         Title="TabPrikaz" Height="450" Width="800" WindowStyle="None" AllowsTransparency="True" Background="Transparent"
-        MouseLeftButtonDown="Window_MouseLeftButtonDown" SizeToContent="WidthAndHeight">
+        MouseLeftButtonDown="Window_MouseLeftButtonDown" SizeToContent="WidthAndHeight" Closing="Window_Closing">
     <Canvas Height="450" Width="800">
         <Path Stroke="Transparent" StrokeThickness="1" Name="UIPath" HorizontalAlignment="Center" Height="450" Stretch="Fill" VerticalAlignment="Top">
             <Path.Fill>
@@ -47,27 +47,32 @@
 
                 <Label Grid.ColumnSpan="2" Content="Tabelarni prikaz komedija" Foreground="White" FontSize="50" HorizontalAlignment="Center"></Label>
                 
-                <DataGrid ItemsSource="{Binding Komedije}" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="20 0 20 0" FontSize="15">
+                <DataGrid x:Name="dgTabela" ItemsSource="{Binding Komedije}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="20 0 20 0" FontSize="15" IsReadOnly="false" AutoGenerateColumns="false" CanUserAddRows="false">
                     <DataGrid.Columns>
 
-                        <DataGridCheckBoxColumn></DataGridCheckBoxColumn>
+                        <DataGridCheckBoxColumn ></DataGridCheckBoxColumn>
 
-                        <DataGridTextColumn Header="Ime komedije" Width="*"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Link" Width="*"></DataGridTextColumn>
+                        <DataGridHyperlinkColumn Header="Ime komedije" Width="*" Binding="{Binding Ime}">
+                            <DataGridHyperlinkColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <EventSetter Event="Hyperlink.Click" Handler="OnHyperlinkClick"></EventSetter>
+                                </Style>
+                            </DataGridHyperlinkColumn.ElementStyle>
+                        </DataGridHyperlinkColumn>
                         
                         <DataGridTemplateColumn Header="Slika filma" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Source="{Binding Slika}" Height="1"></Image>
+                                    <Image Source="{Binding Slika}" Height="100"></Image>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Datum dodavanja" Width="*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Datum dodavanja" Width="*" Binding="{Binding DatumDodavanja}"></DataGridTextColumn>
 
                     </DataGrid.Columns>
                 </DataGrid>
                 
-                <Button Grid.Row="4" Margin="30 15" Content="Obrisi izbor" FontSize="23"></Button>
+                <Button x:Name="btnObrisiIzbor" Grid.Row="4" Margin="30 15" Content="Obrisi izbor" FontSize="23" Click="btnObrisiIzbor_Click"></Button>
                 <Button Name="btnDodajFilm" Grid.Row="4" Grid.Column="1" Margin="30 15" Content="Dodaj film" FontSize="23" Click="btnDodajFilm_Click"></Button>
                 
             </Grid>

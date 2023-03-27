@@ -22,10 +22,13 @@ namespace Filmovi
     /// </summary>
     public partial class DodajFilm : Window
     {
-
+        int izmena; //-1 kada dodajemo novi film, >-1 kada menjamo postojeci
         string slika = "";
+        Common.Komedija kopija;
         public DodajFilm()
         {
+            izmena = -1;
+
             InitializeComponent();
 
             tbIme.Text = "Unesite ime filma!";
@@ -44,6 +47,43 @@ namespace Filmovi
             
         }
 
+        public DodajFilm(int idx)
+        {
+            izmena = idx;
+            InitializeComponent();
+            btnDodaj.Content = "Izmeni";
+            lblDodavanjeFilma.Content = "Izmena filma";
+
+            kopija = new Common.Komedija(TabPrikaz.Komedije[idx]);
+            TabPrikaz.Komedije.RemoveAt(idx);
+
+            tbIme.Text = kopija.Ime;
+            tbTrajanje.Text = kopija.Trajanje.ToString();
+            LoadOpis();
+            slika = kopija.Slika;
+            Uri uri = new Uri(slika);
+            imgSlika.Source = new BitmapImage(uri);
+
+            cmbFont.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
+            cmbFontSize.ItemsSource = new List<double> { 10, 12, 14, 16, 18, 29, 22, 24, 26, 28, 30, 32, 34 };
+            cmbFontColor.ItemsSource = new List<string> { "Black", "Blue", "Red" };
+
+        }
+
+        private void LoadOpis()
+        {
+            string fileName = kopija.Ime + ".rtf";
+            TextRange range;
+            FileStream fStream;
+            if(File.Exists(fileName))
+            {
+                range = new TextRange(rtbOpis.Document.ContentStart, rtbOpis.Document.ContentEnd);
+                fStream = new FileStream(fileName, FileMode.OpenOrCreate);
+                range.Load(fStream, DataFormats.Rtf);
+                fStream.Close();
+            }
+        }
+
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
@@ -51,6 +91,12 @@ namespace Filmovi
 
         private void btnIzlaz_Click(object sender, RoutedEventArgs e)
         {
+            if (izmena != -1)
+            {
+                TabPrikaz.Komedije.Insert(izmena,kopija);
+                this.Close();
+                return;
+            }
             this.Close();
         }
 
@@ -225,7 +271,12 @@ namespace Filmovi
                 tr.Save(fs, DataFormats.Rtf);
                 fs.Close();
 
-                TabPrikaz.Komedije.Add(new Common.Komedija(tbIme.Text, Int32.Parse(tbTrajanje.Text), tr.ToString(), slika, opisRtf, DateTime.Now));
+                if(izmena == -1)
+                    TabPrikaz.Komedije.Add(new Common.Komedija(tbIme.Text, Int32.Parse(tbTrajanje.Text), tr.ToString(), slika, opisRtf, DateTime.Now));
+                else
+                    TabPrikaz.Komedije.Insert(izmena,new Common.Komedija(tbIme.Text, Int32.Parse(tbTrajanje.Text), tr.ToString(), slika, opisRtf, kopija.DatumDodavanja));
+
+
                 this.Close();
             }
             else

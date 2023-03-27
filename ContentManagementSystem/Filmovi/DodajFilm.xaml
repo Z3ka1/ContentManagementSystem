@@ -48,7 +48,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.ColumnSpan="4" HorizontalAlignment="Center" Content="Dodavanje filma" FontSize="50" Foreground="White"></Label>
+            <Label Name="lblDodavanjeFilma" Grid.ColumnSpan="4" HorizontalAlignment="Center" Content="Dodavanje filma" FontSize="50" Foreground="White"></Label>
 
             <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2">
                 <Label Content="Ime" FontSize="20" Foreground="White" Margin="10 0 0 0"></Label>

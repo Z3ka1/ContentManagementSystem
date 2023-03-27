@@ -36,6 +36,14 @@ namespace Common
             this.datumDodavanja = datumDodavanja;
         }
 
-
+        public Komedija(Komedija komedija)
+        {
+            this.ime = komedija.ime;
+            this.trajanje = komedija.trajanje;
+            this.opis = komedija.opis;
+            this.slika = komedija.slika;
+            this.rtfRef = komedija.rtfRef;
+            this.datumDodavanja = komedija.datumDodavanja;
+        }
     }
 }
