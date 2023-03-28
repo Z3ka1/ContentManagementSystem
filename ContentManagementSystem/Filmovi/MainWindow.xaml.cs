@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,10 +40,38 @@ namespace Filmovi
         private void btnPrijava_Click(object sender, RoutedEventArgs e)
         {
             //TODO Validacija prijave
+            bool admin = false;
+            bool isUserFound = false;
+            
+            using(StreamReader file = new StreamReader("korisnici.txt"))
+            {
+                string line;
+                while((line = file.ReadLine())!=null)
+                {
+                    string[] parts = line.Split('|');
+                    if (parts[0] == tbKorisnickoIme.Text && parts[1] == pwbLozinka.Password)
+                    {
+                        isUserFound = true;
+                        if (parts[2] == "admin")
+                            admin = true;
+                        file.Close();
+                        break;
+                    }
+                }
 
-            TabPrikaz prikaz = new TabPrikaz();
-            this.Close();
-            prikaz.ShowDialog();
+                if (isUserFound)
+                {
+                    TabPrikaz prikaz = new TabPrikaz(admin);
+                    this.Close();
+                    prikaz.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Pogresno korisnicko ime ili lozinka!","Greska",MessageBoxButton.OK,MessageBoxImage.Stop);
+                }
+
+            }
         }
+
     }
 }

@@ -1,0 +1,78 @@
+﻿<Window x:Class="Filmovi.PrikazFilma"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Filmovi"
+        mc:Ignorable="d"
+        Title="PrikazFilma" Height="450" Width="800" WindowStyle="None" AllowsTransparency="True" 
+        Background="Transparent" MouseLeftButtonDown="Window_MouseLeftButtonDown"  SizeToContent="WidthAndHeight">
+
+    <Canvas Height="450" Width="800">
+        <Path Stroke="Transparent" StrokeThickness="1" Name="UIPath" HorizontalAlignment="Center" Height="450" Stretch="Fill" VerticalAlignment="Top">
+            <Path.Fill>
+                <ImageBrush ImageSource="slike/background.jpg"/>
+            </Path.Fill>
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure StartPoint="50,0">
+                        <ArcSegment Point="0,50" Size="50,50" />
+                        <LineSegment Point="0,450" />
+                        <ArcSegment Point="50,500" Size="50,50"/>
+                        <LineSegment Point="750,500" />
+                        <ArcSegment Point="800,450" Size="50,50"/>
+                        <LineSegment Point="800,50"/>
+                        <ArcSegment Point="750,0" Size="50,50"/>
+                        <LineSegment Point="50,0"/>
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+
+        <Button x:Name="btnIzlaz" Click="btnIzlaz_Click"  Background="{x:Null}" Width="50" Height="50" Canvas.Right="50" Canvas.Top="40">
+            <Image Source="slike/exit.png" ></Image>
+        </Button>
+
+        <Grid Canvas.Left="50" Canvas.Top="25" Height="400" Width="700">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Informacije o filmu" Foreground="White" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+
+            <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                <Label Content="Naziv filma" Foreground="White" FontSize="20" Margin="10 0"></Label>
+                <TextBox Name="tbNaziv" FontSize="20" IsReadOnly="True" Margin="15 0" Background="LightGray"></TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" VerticalAlignment="Center">
+                <Label Content="Trajanje filma" Foreground="White" FontSize="20" Margin="10 0"></Label>
+                <TextBox Name="tbTrajanje" FontSize="20" IsReadOnly="True" Margin="15 0" Background="LightGray"></TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" VerticalAlignment="Center">
+                <Label Content="Datum dodavanja" Foreground="White" FontSize="20" Margin="10 0"></Label>
+                <TextBox Name="tbDatum" FontSize="20" IsReadOnly="True" Margin="15 0" Background="LightGray"></TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Bottom" Margin="10 0 10 0">
+                <Label Content="Opis" Foreground="White" FontSize="20" Margin="10 0"></Label>
+                <RichTextBox Name="rtbOpis" Height="125" Background="LightGray" IsReadOnly="True"></RichTextBox>
+            </StackPanel>
+
+            <Border Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Margin="10" BorderThickness="2" BorderBrush="Red">
+                <Image Name="imgSlika"></Image>
+            </Border>
+            
+        </Grid>
+        
+    </Canvas>
+</Window>

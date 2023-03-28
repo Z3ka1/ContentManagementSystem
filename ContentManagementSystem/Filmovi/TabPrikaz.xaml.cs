@@ -25,8 +25,10 @@ namespace Filmovi
         public static BindingList<Komedija> Komedije { get; set; }
 
         private bool isAdmin = false;
-        public TabPrikaz()
+        public TabPrikaz(bool admin)
         {
+            this.isAdmin = admin;
+
             Komedije = serializer.DeSerializeObject<BindingList<Common.Komedija>>("komedije.xml");
             if(Komedije == null)
             {
@@ -34,6 +36,13 @@ namespace Filmovi
             }
             DataContext = this;
             InitializeComponent();
+
+            if(!isAdmin)
+            {
+                btnDodajFilm.Visibility = Visibility.Hidden;
+                btnObrisiIzbor.Visibility = Visibility.Hidden;
+                dgTabela.IsReadOnly = true;
+            }
             
         }
 
@@ -70,6 +79,13 @@ namespace Filmovi
                 df.ShowDialog();
                 this.Show();
             }
+            else
+            {
+                PrikazFilma pf = new PrikazFilma(dgTabela.SelectedIndex);
+                this.Hide();
+                pf.ShowDialog();
+                this.Show();
+            }
         }
 
         private void btnObrisiIzbor_Click(object sender, RoutedEventArgs e)
@@ -87,6 +103,11 @@ namespace Filmovi
                     brObrisanih++;
                 }
             }
+
+            if (brObrisanih == 0)
+                MessageBox.Show("Da bi ste obrisali film iz liste potrebno je da " +
+                    "oznacite \"check box\" filma koji brisete!","Brisanje",MessageBoxButton.OK,MessageBoxImage.Information);
+
         }
     }
 }

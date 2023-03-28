@@ -1,10 +1,27 @@
 <?xml version="1.0"?>
 <ArrayOfKomedija xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Komedija>
-    <Ime>Test11</Ime>
-    <Trajanje>105</Trajanje>
+    <Ime>Sam u kuci</Ime>
+    <Trajanje>103</Trajanje>
     <Slika>C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\Slike\samUKuci.jpg</Slika>
-    <Opis>System.Windows.Documents.TextRange</Opis>
-    <DatumDodavanja>2023-03-27T18:27:36.1004195+02:00</DatumDodavanja>
+    <DatumDodavanja>2023-03-28T19:27:52.6080143+02:00</DatumDodavanja>
+  </Komedija>
+  <Komedija>
+    <Ime>Tesna koza</Ime>
+    <Trajanje>82</Trajanje>
+    <Slika>C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\Slike\tesnaKoza.jpg</Slika>
+    <DatumDodavanja>2023-03-28T19:36:27.3677108+02:00</DatumDodavanja>
+  </Komedija>
+  <Komedija>
+    <Ime>Nindza kornjace</Ime>
+    <Trajanje>93</Trajanje>
+    <Slika>C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\Slike\nindzaKornjace.jpg</Slika>
+    <DatumDodavanja>2023-03-28T19:37:31.0768801+02:00</DatumDodavanja>
+  </Komedija>
+  <Komedija>
+    <Ime>Mi nismo andjeli</Ime>
+    <Trajanje>98</Trajanje>
+    <Slika>C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\Slike\miNismoAndjeliAndjelaJeNama.jpg</Slika>
+    <DatumDodavanja>2023-03-28T19:38:32.3567466+02:00</DatumDodavanja>
   </Komedija>
 </ArrayOfKomedija>

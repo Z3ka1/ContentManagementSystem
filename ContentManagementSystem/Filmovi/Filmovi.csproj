@@ -58,6 +58,9 @@
     <Compile Include="DodajFilm.xaml.cs">
       <DependentUpon>DodajFilm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PrikazFilma.xaml.cs">
+      <DependentUpon>PrikazFilma.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TabPrikaz.xaml.cs">
       <DependentUpon>TabPrikaz.xaml</DependentUpon>
     </Compile>
@@ -78,6 +81,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Prikaz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrikazFilma.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,6 +142,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Slike\italic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Slike\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Slike\delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

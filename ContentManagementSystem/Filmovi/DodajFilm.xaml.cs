@@ -41,9 +41,6 @@ namespace Filmovi
             cmbFontSize.ItemsSource = new List<double> { 10, 12, 14, 16, 18, 29, 22, 24, 26, 28, 30, 32, 34 };
             cmbFontColor.ItemsSource = new List<string> { "Black", "Blue", "Red" };
 
-            cmbFontColor.SelectedIndex = 0;
-            cmbFont.SelectedIndex = 2;
-            cmbFontSize.SelectedIndex = 16;
             
         }
 
@@ -272,9 +269,9 @@ namespace Filmovi
                 fs.Close();
 
                 if(izmena == -1)
-                    TabPrikaz.Komedije.Add(new Common.Komedija(tbIme.Text, Int32.Parse(tbTrajanje.Text), tr.ToString(), slika, opisRtf, DateTime.Now));
+                    TabPrikaz.Komedije.Add(new Common.Komedija(tbIme.Text, Int32.Parse(tbTrajanje.Text),  slika, opisRtf, DateTime.Now));
                 else
-                    TabPrikaz.Komedije.Insert(izmena,new Common.Komedija(tbIme.Text, Int32.Parse(tbTrajanje.Text), tr.ToString(), slika, opisRtf, kopija.DatumDodavanja));
+                    TabPrikaz.Komedije.Insert(izmena,new Common.Komedija(tbIme.Text, Int32.Parse(tbTrajanje.Text),  slika, opisRtf, kopija.DatumDodavanja));
 
 
                 this.Close();
