@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,11 @@ namespace Filmovi
             }
             DataContext = this;
             InitializeComponent();
+
+            foreach (Komedija k in Komedije)
+            {
+                k.Brisi = false;
+            }
 
             if(!isAdmin)
             {
@@ -91,31 +97,60 @@ namespace Filmovi
 
         private void btnObrisiIzbor_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                dgTabela.ScrollIntoView(dgTabela.Items[0]);
-            }
-            catch { }
-
             int brObrisanih = 0;
             int brFilmova = dgTabela.Items.Count;
-            for (int i = 0; i < brFilmova; i++)
+            for(int i = 0;i < brFilmova; i++)
             {
-                var item = dgTabela.Items[i - brObrisanih];
-                var myCheckBox = dgTabela.Columns[0].GetCellContent(item) as CheckBox;
-
-                if ((bool)myCheckBox.IsChecked)
+                if (Komedije[i - brObrisanih].Brisi)
                 {
+                    File.Delete(Komedije[i-brObrisanih].RtfRef);
                     Komedije.RemoveAt(i - brObrisanih);
                     brObrisanih++;
                 }
             }
 
-            if (brObrisanih == 0)
+            if(brObrisanih == 0)
+            {
                 MessageBox.Show("Da bi ste obrisali film iz liste potrebno je da " +
                     "oznacite \"check box\" filma koji brisete!", "Brisanje", MessageBoxButton.OK, MessageBoxImage.Information);
 
+            }
+        }
 
+        //private void btnObrisiIzbor_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        dgTabela.ScrollIntoView(dgTabela.Items[0]);
+        //    }
+        //    catch { }
+
+        //    int brObrisanih = 0;
+        //    int brFilmova = dgTabela.Items.Count;
+        //    for (int i = 0; i < brFilmova; i++)
+        //    {
+        //        var item = dgTabela.Items[i - brObrisanih];
+        //        var myCheckBox = dgTabela.Columns[0].GetCellContent(item) as CheckBox;
+
+        //        if ((bool)myCheckBox.IsChecked)
+        //        {
+        //            Komedije.RemoveAt(i - brObrisanih);
+        //            MessageBox.Show(Komedije[i].RtfRef);
+        //            //File.Delete("");
+        //            brObrisanih++;
+        //        }
+        //    }
+
+        //    if (brObrisanih == 0)
+        //        MessageBox.Show("Da bi ste obrisali film iz liste potrebno je da " +
+        //            "oznacite \"check box\" filma koji brisete!", "Brisanje", MessageBoxButton.OK, MessageBoxImage.Information);
+
+
+
+        //}
+
+        private void btnObrisiIzbor_MouseEnter(object sender, MouseEventArgs e)
+        {
 
         }
     }

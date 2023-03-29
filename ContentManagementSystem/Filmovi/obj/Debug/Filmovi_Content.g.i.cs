@@ -8,6 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("slike/delete.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("slike/lajanjenazvezde.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("slike/minismoandjeliandjelajenama.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("slike/mrbean.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("slike/nindzakornjace.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("slike/samukuci.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("slike/tesnakoza.jpg")]
 
 

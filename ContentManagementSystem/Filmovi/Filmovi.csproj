@@ -142,5 +142,13 @@
   <ItemGroup>
     <Resource Include="Slike\delete.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Slike\lajanjeNaZvezde.jpg" />
+    <Resource Include="Slike\miNismoAndjeliAndjelaJeNama.jpg" />
+    <Resource Include="Slike\mrBean.jpg" />
+    <Resource Include="Slike\nindzaKornjace.jpg" />
+    <Resource Include="Slike\samUKuci.jpg" />
+    <Resource Include="Slike\tesnaKoza.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

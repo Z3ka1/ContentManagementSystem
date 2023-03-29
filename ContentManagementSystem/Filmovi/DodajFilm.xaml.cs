@@ -63,7 +63,7 @@ namespace Filmovi
             tbTrajanje.Text = kopija.Trajanje.ToString();
             LoadOpis();
             slika = kopija.Slika;
-            Uri uri = new Uri(slika);
+            Uri uri = new Uri(slika, UriKind.Relative);
             imgSlika.Source = new BitmapImage(uri);
 
             cmbFont.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
@@ -117,7 +117,7 @@ namespace Filmovi
         private void cmbFontSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cmbFontSize.SelectedItem != null && !rtbOpis.Selection.IsEmpty)
-                rtbOpis.Selection.ApplyPropertyValue(Inline.FontSizeProperty, cmbFontSize.SelectedItem); ;
+                rtbOpis.Selection.ApplyPropertyValue(Inline.FontSizeProperty, cmbFontSize.SelectedValue); ;
         }
 
         private void cmbFontColor_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -176,13 +176,39 @@ namespace Filmovi
 
         private void rtbOpis_TextChanged(object sender, TextChangedEventArgs e)
         {
+            tbBrojac.Text = brojReci2().ToString();
+        }
+
+        private int brojReci1()
+        {
             string text = new TextRange(rtbOpis.Document.ContentStart, rtbOpis.Document.ContentEnd).Text;
             //tbBrojac.Text = text.Split(' ').Count().ToString();
 
-            char[] splitWordsBy = { '?', '!', '.', '\n', ' ', ':', ';' }; 
+            char[] splitWordsBy = { '?', '!', '.', '\n', ' ', ':', ';' };
             int wordCount = text.Split(splitWordsBy, StringSplitOptions.RemoveEmptyEntries).Length;
-            tbBrojac.Text = wordCount.ToString();
-               
+            return wordCount;
+        }
+
+        private int brojReci2()
+        {
+            int count = 0;
+            int idx = 0;
+            string text = new TextRange(rtbOpis.Document.ContentStart, rtbOpis.Document.ContentEnd).Text;
+
+            while (idx < text.Length && char.IsWhiteSpace(text[idx]))
+                idx++;
+
+            while(idx < text.Length)
+            {
+                while (idx < text.Length && !char.IsWhiteSpace(text[idx]))
+                    idx++;
+
+                count++;
+
+                while (idx < text.Length && char.IsWhiteSpace(text[idx]))
+                    idx++;
+            }
+            return count;
         }
 
         private void btnUmetni_Click(object sender, RoutedEventArgs e)
@@ -190,9 +216,18 @@ namespace Filmovi
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
-                slika = openFileDialog.FileName;
-                Uri uri = new Uri(slika);
+                //slika = openFileDialog.FileName;
+                //Uri uri = new Uri(slika);
+                //imgSlika.Source = new BitmapImage(uri);
+                
+                string absolute = openFileDialog.FileName;
+                int relativePathStartIndex = absolute.IndexOf("Slike");
+                slika = "..\\..\\" + absolute.Substring(relativePathStartIndex);
+
+                Uri uri = new Uri(slika , UriKind.Relative);
                 imgSlika.Source = new BitmapImage(uri);
+
+
             }
         }
 

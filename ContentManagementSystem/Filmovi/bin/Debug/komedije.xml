@@ -3,29 +3,33 @@
   <Komedija>
     <Ime>Mi nismo andjeli</Ime>
     <Trajanje>87</Trajanje>
-    <Slika>C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\Slike\miNismoAndjeliAndjelaJeNama.jpg</Slika>
+    <Slika>..\..\Slike\miNismoAndjeliAndjelaJeNama.jpg</Slika>
     <DatumDodavanja>2023-03-29T19:22:16.9231181+02:00</DatumDodavanja>
     <RtfRef>..\..\RTF\Mi nismo andjeli.rtf</RtfRef>
+    <Brisi>false</Brisi>
   </Komedija>
   <Komedija>
     <Ime>Nindza kornjace</Ime>
     <Trajanje>96</Trajanje>
-    <Slika>C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\Slike\nindzaKornjace.jpg</Slika>
+    <Slika>..\..\Slike\nindzaKornjace.jpg</Slika>
     <DatumDodavanja>2023-03-29T19:22:43.0469187+02:00</DatumDodavanja>
     <RtfRef>..\..\RTF\Nindza kornjace.rtf</RtfRef>
+    <Brisi>false</Brisi>
   </Komedija>
   <Komedija>
     <Ime>Sam u kuci</Ime>
     <Trajanje>104</Trajanje>
-    <Slika>C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\Slike\samUKuci.jpg</Slika>
+    <Slika>..\..\Slike\samUKuci.jpg</Slika>
     <DatumDodavanja>2023-03-29T19:23:07.3252606+02:00</DatumDodavanja>
     <RtfRef>..\..\RTF\Sam u kuci.rtf</RtfRef>
+    <Brisi>false</Brisi>
   </Komedija>
   <Komedija>
     <Ime>Tesna koza</Ime>
     <Trajanje>124</Trajanje>
-    <Slika>C:\Users\Win11\Desktop\Inz upotrebljivosti u IS\ContentManagementSystem\ContentManagementSystem\Filmovi\Slike\tesnaKoza.jpg</Slika>
+    <Slika>..\..\Slike\tesnaKoza.jpg</Slika>
     <DatumDodavanja>2023-03-29T19:23:31.6961273+02:00</DatumDodavanja>
     <RtfRef>..\..\RTF\Tesna koza.rtf</RtfRef>
+    <Brisi>false</Brisi>
   </Komedija>
 </ArrayOfKomedija>

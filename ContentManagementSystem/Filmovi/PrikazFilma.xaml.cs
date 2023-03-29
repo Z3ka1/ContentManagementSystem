@@ -28,7 +28,7 @@ namespace Filmovi
             tbTrajanje.Text = TabPrikaz.Komedije[idx].Trajanje.ToString() + " minuta";
             tbDatum.Text = TabPrikaz.Komedije[idx].DatumDodavanja.ToString("dd/MM/yyyy");
             LoadOpis();
-            Uri uri = new Uri(TabPrikaz.Komedije[idx].Slika);
+            Uri uri = new Uri(TabPrikaz.Komedije[idx].Slika, UriKind.Relative);
             imgSlika.Source = new BitmapImage(uri);
         }
 

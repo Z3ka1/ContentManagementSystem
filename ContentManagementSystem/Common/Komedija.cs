@@ -13,12 +13,13 @@ namespace Common
         private string slika;
         private string rtfRef;
         private DateTime datumDodavanja;
-
+        private bool brisi;
         public string Ime { get => ime; set => ime = value; }
         public int Trajanje { get => trajanje; set => trajanje = value; }
         public string Slika { get => slika; set => slika = value; }
         public DateTime DatumDodavanja { get => datumDodavanja; set => datumDodavanja = value; }
         public string RtfRef { get => rtfRef; set => rtfRef = value; }
+        public bool Brisi { get => brisi; set => brisi = value; }
 
         public Komedija()
         {
@@ -32,6 +33,7 @@ namespace Common
             this.slika = slika;
             this.rtfRef = rtfRef;
             this.datumDodavanja = datumDodavanja;
+            Brisi = false;
         }
 
         public Komedija(Komedija komedija)
@@ -41,6 +43,7 @@ namespace Common
             this.slika = komedija.slika;
             this.rtfRef = komedija.RtfRef;
             this.datumDodavanja = komedija.datumDodavanja;
+            Brisi = false;
         }
     }
 }
