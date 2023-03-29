@@ -54,9 +54,19 @@
                 <Label Grid.Column="1" Grid.ColumnSpan="2" Content="Tabelarni prikaz komedija" Foreground="White" FontSize="45" HorizontalAlignment="Center"></Label>
                 
                 <DataGrid x:Name="dgTabela" ItemsSource="{Binding Komedije}" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="4" Margin="0 0 0 0" FontSize="15" IsReadOnly="false" AutoGenerateColumns="false" CanUserAddRows="false">
-                    <DataGrid.Columns>
 
-                        <DataGridCheckBoxColumn ></DataGridCheckBoxColumn>
+                    <DataGrid.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="LightBlue"></Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.CellStyle>
+
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn x:Name="dgCheckBoxColumn"></DataGridCheckBoxColumn>
 
                         <DataGridHyperlinkColumn Header="Ime komedije" Width="*" Binding="{Binding Ime}">
                             <DataGridHyperlinkColumn.ElementStyle>
@@ -73,7 +83,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Datum dodavanja" Width="*" Binding="{Binding DatumDodavanja}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Datum dodavanja" Width="*" Binding="{Binding DatumDodavanja, StringFormat=dd-MM-yyyy}"></DataGridTextColumn>
 
                     </DataGrid.Columns>
                 </DataGrid>

@@ -18,6 +18,7 @@ namespace Common
         public int Trajanje { get => trajanje; set => trajanje = value; }
         public string Slika { get => slika; set => slika = value; }
         public DateTime DatumDodavanja { get => datumDodavanja; set => datumDodavanja = value; }
+        public string RtfRef { get => rtfRef; set => rtfRef = value; }
 
         public Komedija()
         {
@@ -38,7 +39,7 @@ namespace Common
             this.ime = komedija.ime;
             this.trajanje = komedija.trajanje;
             this.slika = komedija.slika;
-            this.rtfRef = komedija.rtfRef;
+            this.rtfRef = komedija.RtfRef;
             this.datumDodavanja = komedija.datumDodavanja;
         }
     }

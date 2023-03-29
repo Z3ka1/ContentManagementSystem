@@ -22,7 +22,7 @@ namespace Filmovi
     /// </summary>
     public partial class DodajFilm : Window
     {
-        int izmena; //-1 kada dodajemo novi film, >-1 kada menjamo postojeci
+        int izmena; //-1 kada dodajem novi film, >-1 kada menjam postojeci
         string slika = "";
         Common.Komedija kopija;
         public DodajFilm()
@@ -39,9 +39,14 @@ namespace Filmovi
 
             cmbFont.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
             cmbFontSize.ItemsSource = new List<double> { 10, 12, 14, 16, 18, 29, 22, 24, 26, 28, 30, 32, 34 };
-            cmbFontColor.ItemsSource = new List<string> { "Black", "Blue", "Red" };
-
             
+            for (int i = 0; i < (typeof(Colors).GetProperties().Count()); i++)
+            {
+                cmbFontColor.Items.Add(typeof(Colors).GetProperties()[i].ToString().Split(' ')[1]);
+            }
+
+            cmbFontColor.SelectedItem = "Black";
+
         }
 
         public DodajFilm(int idx)
@@ -63,13 +68,18 @@ namespace Filmovi
 
             cmbFont.ItemsSource = Fonts.SystemFontFamilies.OrderBy(f => f.Source);
             cmbFontSize.ItemsSource = new List<double> { 10, 12, 14, 16, 18, 29, 22, 24, 26, 28, 30, 32, 34 };
-            cmbFontColor.ItemsSource = new List<string> { "Black", "Blue", "Red" };
+
+            for (int i = 0; i < (typeof(Colors).GetProperties().Count()); i++)
+            {
+                cmbFontColor.Items.Add(typeof(Colors).GetProperties()[i].ToString().Split(' ')[1]);
+            }
+            cmbFontColor.SelectedItem = "Black";
 
         }
 
         private void LoadOpis()
         {
-            string fileName = kopija.Ime + ".rtf";
+            string fileName = "..\\..\\RTF\\" + kopija.Ime + ".rtf";
             TextRange range;
             FileStream fStream;
             if(File.Exists(fileName))
@@ -107,14 +117,39 @@ namespace Filmovi
         private void cmbFontSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cmbFontSize.SelectedItem != null && !rtbOpis.Selection.IsEmpty)
-                rtbOpis.Selection.ApplyPropertyValue(Inline.FontSizeProperty, cmbFontSize.SelectedValue);
+                rtbOpis.Selection.ApplyPropertyValue(Inline.FontSizeProperty, cmbFontSize.SelectedItem); ;
         }
 
         private void cmbFontColor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cmbFontColor.SelectedItem != null && !rtbOpis.Selection.IsEmpty)
-                rtbOpis.Selection.ApplyPropertyValue(Inline.ForegroundProperty, cmbFontColor.SelectedValue);
+            if (cmbFontColor.SelectedItem != null)
+            {
+                rtbOpis.Selection.ApplyPropertyValue(Inline.ForegroundProperty, (SolidColorBrush)(new BrushConverter().ConvertFrom(cmbFontColor.SelectedValue.ToString())));
+                //if (!ChosenColors.Contains(cmbFontColor.SelectedValue.ToString()))
+                //{
+                //    ChosenColors.Add(cmbFontColor.SelectedValue.ToString());
+                //}
+            }
         }
+
+        //private string GetColor(SolidColorBrush brush)
+        //{
+        //    string result = string.Empty;
+
+        //    SolidColorBrush stringBrush = null;
+
+        //    foreach (string s in ChosenColors)
+        //    {
+        //        stringBrush = ((SolidColorBrush)(new BrushConverter().ConvertFrom(s)));
+
+        //        if ((stringBrush.Color.A == brush.Color.A) && (stringBrush.Color.R == brush.Color.R) && (stringBrush.Color.G == brush.Color.G) && (stringBrush.Color.B == brush.Color.B))
+        //        {
+        //            result = s;
+        //        }
+        //    }
+
+        //    return result;
+        //}
 
         private void rtbOpis_SelectionChanged(object sender, RoutedEventArgs e)
         {
@@ -131,17 +166,22 @@ namespace Filmovi
             cmbFont.SelectedItem = temp;
 
             temp = rtbOpis.Selection.GetPropertyValue(Inline.FontSizeProperty);
-            cmbFontSize.Text = temp.ToString();
+            cmbFontSize.SelectedItem = temp.ToString();
 
             temp = rtbOpis.Selection.GetPropertyValue(Inline.ForegroundProperty);
-            cmbFontColor.Text = temp.ToString();
+            //cmbFontColor.SelectedItem = GetColor((SolidColorBrush)(new BrushConverter().ConvertFrom(temp.ToString())));
+
 
         }
 
         private void rtbOpis_TextChanged(object sender, TextChangedEventArgs e)
         {
             string text = new TextRange(rtbOpis.Document.ContentStart, rtbOpis.Document.ContentEnd).Text;
-            tbBrojac.Text = text.Split(' ').Count().ToString();
+            //tbBrojac.Text = text.Split(' ').Count().ToString();
+
+            char[] splitWordsBy = { '?', '!', '.', '\n', ' ', ':', ';' }; 
+            int wordCount = text.Split(splitWordsBy, StringSplitOptions.RemoveEmptyEntries).Length;
+            tbBrojac.Text = wordCount.ToString();
                
         }
 
@@ -261,7 +301,7 @@ namespace Filmovi
         {
             if(validate())
             {
-                string opisRtf = tbIme.Text + ".rtf";
+                string opisRtf = "..\\..\\RTF\\" + tbIme.Text + ".rtf";
 
                 TextRange tr = new TextRange(rtbOpis.Document.ContentStart, rtbOpis.Document.ContentEnd);
                 FileStream fs = new FileStream(opisRtf, FileMode.Create);
@@ -278,7 +318,7 @@ namespace Filmovi
             }
             else
             {
-                MessageBox.Show("Dodavanje ne uspesno. Morate popuniti sve informacije o filmu!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Dodavanje ne uspesno. Morate odabrati sliku i popuniti sve informacije o filmu!", "Greska", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

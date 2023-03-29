@@ -26,7 +26,7 @@ namespace Filmovi
 
             tbNaziv.Text = TabPrikaz.Komedije[idx].Ime;
             tbTrajanje.Text = TabPrikaz.Komedije[idx].Trajanje.ToString() + " minuta";
-            tbDatum.Text = TabPrikaz.Komedije[idx].DatumDodavanja.ToShortDateString();
+            tbDatum.Text = TabPrikaz.Komedije[idx].DatumDodavanja.ToString("dd/MM/yyyy");
             LoadOpis();
             Uri uri = new Uri(TabPrikaz.Komedije[idx].Slika);
             imgSlika.Source = new BitmapImage(uri);
@@ -34,7 +34,7 @@ namespace Filmovi
 
         private void LoadOpis()
         {
-            string fileName = tbNaziv.Text + ".rtf";
+            string fileName ="..\\..\\RTF\\" + tbNaziv.Text + ".rtf";
             TextRange range;
             FileStream fStream;
             if (File.Exists(fileName))

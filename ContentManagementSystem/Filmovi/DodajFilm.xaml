@@ -87,9 +87,9 @@
                         <Image Source="slike/italic.png"></Image>
                     </ToggleButton>
                     <Separator/>
-                    <ComboBox Name="cmbFont" Width="120" SelectionChanged="cmbFont_SelectionChanged"></ComboBox>
+                    <ComboBox Name="cmbFont" Width="100" SelectionChanged="cmbFont_SelectionChanged"></ComboBox>
                     <Separator/>
-                    <ComboBox Name="cmbFontSize" Width="25" SelectionChanged="cmbFontSize_SelectionChanged"></ComboBox>
+                    <ComboBox Name="cmbFontSize" Width="45" SelectionChanged="cmbFontSize_SelectionChanged"></ComboBox>
                     <Separator/>
                     <ComboBox Name="cmbFontColor" Width="50" SelectionChanged="cmbFontColor_SelectionChanged"></ComboBox>
                     <Separator/>

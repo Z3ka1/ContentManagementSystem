@@ -41,6 +41,7 @@ namespace Filmovi
             {
                 btnDodajFilm.Visibility = Visibility.Hidden;
                 btnObrisiIzbor.Visibility = Visibility.Hidden;
+                dgCheckBoxColumn.Visibility = Visibility.Hidden;
                 dgTabela.IsReadOnly = true;
             }
             
@@ -90,14 +91,20 @@ namespace Filmovi
 
         private void btnObrisiIzbor_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                dgTabela.ScrollIntoView(dgTabela.Items[0]);
+            }
+            catch { }
+
             int brObrisanih = 0;
             int brFilmova = dgTabela.Items.Count;
-            for(int i = 0; i < brFilmova; i++)
+            for (int i = 0; i < brFilmova; i++)
             {
                 var item = dgTabela.Items[i - brObrisanih];
                 var myCheckBox = dgTabela.Columns[0].GetCellContent(item) as CheckBox;
 
-                if((bool)myCheckBox.IsChecked)
+                if ((bool)myCheckBox.IsChecked)
                 {
                     Komedije.RemoveAt(i - brObrisanih);
                     brObrisanih++;
@@ -106,7 +113,9 @@ namespace Filmovi
 
             if (brObrisanih == 0)
                 MessageBox.Show("Da bi ste obrisali film iz liste potrebno je da " +
-                    "oznacite \"check box\" filma koji brisete!","Brisanje",MessageBoxButton.OK,MessageBoxImage.Information);
+                    "oznacite \"check box\" filma koji brisete!", "Brisanje", MessageBoxButton.OK, MessageBoxImage.Information);
+
+
 
         }
     }
